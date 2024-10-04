@@ -1,0 +1,47 @@
+-- 1. Basic Select
+SELECT * FROM Employee;
+
+-- 2. Select All
+SELECT * FROM Employee;
+
+-- 3. Select By ID (replace 1 with the desired employee ID)
+SELECT * 
+FROM Employee 
+WHERE id = 1;  
+
+-- 4. Advanced Select
+SELECT COUNT(*) AS total_employees, MAX(salary) AS max_salary 
+FROM Employee;
+
+-- 5. Top N Ranked Students (replace N with the desired number)
+SELECT name, score
+FROM Students
+ORDER BY score DESC
+LIMIT N;  
+
+-- 6. Weather Observation Station 1
+SELECT DISTINCT city 
+FROM STATION 
+WHERE city LIKE '%a%';
+
+-- 7. Ranking Students
+SELECT name, score, 
+       RANK() OVER (ORDER BY score DESC) AS rank
+FROM Students;
+
+-- 8. Employee Salaries
+SELECT e1.name 
+FROM Employee e1
+JOIN Employee e2 ON e1.manager_id = e2.id
+WHERE e1.salary > e2.salary;
+
+-- 9. Kth Highest Salary (replace K with the desired rank)
+SELECT DISTINCT salary 
+FROM Employee 
+ORDER BY salary DESC 
+LIMIT 1 OFFSET K-1;  
+
+-- 10. Finding the Second Highest Salary
+SELECT MAX(salary) AS SecondHighestSalary
+FROM Employee
+WHERE salary < (SELECT MAX(salary) FROM Employee);
