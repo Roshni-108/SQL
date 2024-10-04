@@ -1,0 +1,23 @@
+-- Aggregate Functions
+SELECT 
+    COUNT(*) AS TotalEmployees,
+    AVG(salary) AS AverageSalary,
+    MAX(salary) AS MaxSalary,
+    MIN(salary) AS MinSalary
+FROM Employee;
+
+-- Grouping with GROUP BY
+SELECT 
+    department_id,
+    COUNT(*) AS EmployeeCount,
+    AVG(salary) AS AverageSalary
+FROM Employee
+GROUP BY department_id;
+
+-- Filtering with HAVING
+SELECT 
+    department_id,
+    COUNT(*) AS EmployeeCount
+FROM Employee
+GROUP BY department_id
+HAVING COUNT(*) > 5;  -- Only show departments with more than 5 employees
